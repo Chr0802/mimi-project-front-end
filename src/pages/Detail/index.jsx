@@ -42,6 +42,202 @@ const GraphComponent = ({ data }) => {
   const { run, loading } = useRequest(getCaseGraph, {
     manual: true,
     onSuccess: (res) => {
+      let fakeRes ={
+        "categories": {
+          "time": "时间",
+          "loc": "地点",
+          "industry": "涉及行业",
+          "cate": "商业秘密类别",
+          "carrier": "载体形式",
+          "nature": "性质",
+          "pro": "侵权人属性",
+          "way": "侵权方式",
+          "aim": "侵权目的",
+          "event": "事件",
+          "people": "涉案人员",
+          "org": "组织机构",
+          "law": "法律条款",
+          "article": "正文"
+        },
+        "nodes": [
+          {
+            "id": 0,
+            "label": "2021",
+            "group": "time"
+          },
+          {
+            "id": 1,
+            "label": "湖北",
+            "group": "loc"
+          },
+          {
+            "id": 2,
+            "label": "(C)制造业-->(36)专用设备制造业",
+            "group": "industry"
+          },
+          {
+            "id": 3,
+            "label": "技术信息,经营信息",
+            "group": "cate"
+          },
+          {
+            "id": 4,
+            "label": "记忆",
+            "group": "carrier"
+          },
+          {
+            "id": 5,
+            "label": "故意",
+            "group": "nature"
+          },
+          {
+            "id": 6,
+            "label": "内部涉密人员",
+            "group": "pro"
+          },
+          {
+            "id": 7,
+            "label": "自盗",
+            "group": "way"
+          },
+          {
+            "id": 8,
+            "label": "跳槽",
+            "group": "aim"
+          },
+          {
+            "id": 9,
+            "label": "带走老东家“高新机密” 技术骨干获刑判赔20万",
+            "group": "event"
+          },
+          {
+            "id": 10,
+            "label": "杨某，闫某",
+            "group": "people"
+          },
+          {
+            "id": 11,
+            "label": "武汉某高新技术企业",
+            "group": "org"
+          },
+          {
+            "id": 12,
+            "label": "无",
+            "group": "law"
+          }
+        ],
+        "edges": [
+          {
+            "source": 9,
+            "target": 0,
+            "label": "时间"
+          },
+          {
+            "source": 9,
+            "target": 1,
+            "label": "地点"
+          },
+          {
+            "source": 9,
+            "target": 2,
+            "label": "涉及行业"
+          },
+          {
+            "source": 9,
+            "target": 3,
+            "label": "商业秘密类别"
+          },
+          {
+            "source": 9,
+            "target": 4,
+            "label": "载体形式"
+          },
+          {
+            "source": 9,
+            "target": 5,
+            "label": "性质"
+          },
+          {
+            "source": 9,
+            "target": 6,
+            "label": "侵权人属性"
+          },
+          {
+            "source": 9,
+            "target": 7,
+            "label": "侵权方式"
+          },
+          {
+            "source": 9,
+            "target": 8,
+            "label": "侵权目的"
+          },
+          {
+            "source": 9,
+            "target": 10,
+            "label": "窃密方"
+          },
+          {
+            "source": 9,
+            "target": 11,
+            "label": "失密方"
+          },
+          {
+            "source": 9,
+            "target": 12,
+            "label": "法律条款"
+          }
+        ]
+      }
+      fakeRes = {
+        "categories": {
+          "time": '时间',
+          "loc": '地点',
+          "industry": '涉及行业',
+          "cate": '商业秘密类别',
+          "carrier": '载体形式',
+          "nature": '性质',
+          "pro": '侵权人属性',
+          "way": '侵权方式',
+          "aim": '侵权目的',
+          "event": '事件',
+          "people": '涉案人员',
+          "org": '组织机构',
+          "law": '法律条款',
+          "article": '正文',
+          "behave": '行为',
+          "level": '密级',
+          "type": '国家秘密',
+        },
+        "nodes": [
+          { "id": 0, "label": 2014, "group": 'time' },
+          { "id": 1, "label": '某市', "group": 'loc' },
+          { "id": 2, "label": '违规刊登文件', "group": 'event' },
+          { "id": 3, "label": '违规审核文件', "group": 'event' },
+          { "id": 4, "label": '秘密', "group": 'level' },
+          { "id": 5, "label": '国家秘密', "group": 'type' },
+          { "id": 6, "label": '内部涉密人员', "group": 'pro' },
+          { "id": 8, "label": '赵某', "group": 'people' },
+          { "id": 9, "label": '某市国资委网站泄密', "group": 'event' },
+          { "id": 10, "label": '张某', "group": 'people' },
+          { "id": 11, "label": '某市国资委', "group": 'org' },
+        ],
+        "edges": [
+          { "source": 9, "target": 0, "label": '时间' },
+          { "source": 9, "target": 1, "label": '地点' },
+          { "source": 9, "target": 4, "label": '密级' },
+          { "source": 9, "target": 5, "label": '秘密类别' },
+          { "source": 9, "target": 11, "label": '失密机构' },
+          { "source": 9, "target": 8, "label": '泄密方' },
+          { "source": 9, "target": 10, "label": '泄密方' },
+          { "source": 8, "target": 10, "label": '上下级' },
+          { "source": 8, "target": 3, "label": '行为' },
+          { "source": 10, "target": 6, "label": '属性' },
+          { "source": 8, "target": 6, "label": '属性' },
+          { "source": 10, "target": 2, "label": '行为' },
+        ],
+      }
+      res = fakeRes
       const styleDict = {
         time: '#5B8FF9',
         loc: '#CDDDFD',
@@ -57,6 +253,9 @@ const GraphComponent = ({ data }) => {
         org: '#DECFEA',
         law: '#008685',
         article: '#FFE0ED',
+        behave: '#5B8FF9',
+        level: '#5B8FF9',
+        type: '#5B8FF9',
       };
       const nodes = res.nodes.map((node) => {
         let _node = {
@@ -92,6 +291,10 @@ const GraphComponent = ({ data }) => {
         };
         return _edge;
       });
+
+
+      
+
       setGraph({ nodes, edges });
     },
   });
@@ -196,9 +399,8 @@ const Detail = () => {
               {/* <Divider orientation="left">案例</Divider> */}
               <Title>{caseDetail?.title}</Title>
               <Text type="secondary">
-                {`${caseDetail?.year}年${Math.floor(Math.random() * 10) + 1}月${
-                  Math.floor(Math.random() * 30) + 1
-                }日 ` +
+                {`${caseDetail?.year}年${Math.floor(Math.random() * 10) + 1}月${Math.floor(Math.random() * 30) + 1
+                  }日 ` +
                   ' ' +
                   caseDetail?.location +
                   (Math.round(Math.random()) ? '晚报' : '日报')}

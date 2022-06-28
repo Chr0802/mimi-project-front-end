@@ -709,7 +709,6 @@ const DemoAreaMap = () => {
       position: 'bottomleft',
     },
   };
-
   return <AreaMap {...config} />;
 };
 
